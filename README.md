@@ -28,8 +28,20 @@ Docker'а на ноутбуке нет? Тогда локально работа
 | `make test` | прогнать PHPUnit |
 | `make lint` | проверить синтаксис PHP |
 | `make down` | остановить сервис |
+| `make ps` | показать состояние контейнеров |
+| `make logs` | логи бэкенда |
 | `make seed` | перезалить учебные данные |
 | `make help` | список всех команд |
+
+## Как проверить, что сервис жив
+
+| Способ | Команда | Что показывает |
+|---|---|---|
+| HTTP health-endpoint | `curl http://localhost:8080/health` | `200 OK` + JSON-ответ, если приложение отвечает |
+| Статус контейнеров | `make ps` или `docker compose ps` | `backend` и `db` в статусе `Up` (healthy) |
+| Логи бэкенда | `make logs` или `docker compose logs -f backend` | Строка `PHP … Development Server started`, слушающий порт |
+
+> Порт по умолчанию — 8080. На стенде он может быть переопределён переменной `APP_PORT`; тогда используйте `curl http://localhost:$APP_PORT/health`.
 
 ## API
 
