@@ -41,7 +41,7 @@ return [
      *   LTV > review_max          -> reject
      */
     'ltv' => [
-        'approve_max' => 62.0,
+        'approve_max' => 60.0,
         'review_max' => 85.0,
     ],
 

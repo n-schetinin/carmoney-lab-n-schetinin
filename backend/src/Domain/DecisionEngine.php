@@ -29,7 +29,7 @@ final class DecisionEngine
 
     public function decide(float $ltv): string
     {
-        if ($ltv <= $this->approveMax) {
+        if ($ltv < $this->approveMax) {
             return self::APPROVE;
         }
 
