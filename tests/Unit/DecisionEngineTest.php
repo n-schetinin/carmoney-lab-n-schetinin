@@ -14,7 +14,7 @@ final class DecisionEngineTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->engine = new DecisionEngine(['approve_max' => 60.0, 'review_max' => 85.0]);
+        $this->engine = new DecisionEngine((include __DIR__ . '/../../backend/config/rules.php')['ltv']);
     }
 
     #[DataProvider('ltvValues')]
@@ -30,6 +30,7 @@ final class DecisionEngineTest extends TestCase
             'низкий LTV' => [28.5, DecisionEngine::APPROVE],
             'середина зелёной зоны' => [45.0, DecisionEngine::APPROVE],
             'серая зона' => [72.3, DecisionEngine::REVIEW],
+            'верхняя граница зелёной зоны' => [62.0, DecisionEngine::APPROVE],
             'верхняя граница серой зоны' => [85.0, DecisionEngine::REVIEW],
             'сразу за верхней границей' => [85.01, DecisionEngine::REJECT],
             'высокий LTV' => [120.0, DecisionEngine::REJECT],
