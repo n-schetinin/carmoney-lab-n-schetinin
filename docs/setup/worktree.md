@@ -1,0 +1,2 @@
+/Users/admin/PhpstormProjects/carmoney-lab-n-schetinin                              eb81b59 [d1/1.2.1-1.2.3-n-schetinin]
+/Users/admin/PhpstormProjects/carmoney-lab-n-schetinin/.kilo/worktrees/bold-island  eb81b59 [bold-island]
