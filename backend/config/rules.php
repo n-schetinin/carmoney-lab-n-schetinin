@@ -21,6 +21,10 @@ return [
         'min_year' => 1990,
         'max_age_years' => 20,
         'max_mileage_km' => 500000,
+        // Порог решения: пробег строго больше этого значения переводит
+        // итоговое решение в review. Это не валидация ввода (потолок 500 000
+        // остаётся в max_mileage_km), а правило поверх LTV.
+        'review_mileage_km' => 400000,
     ],
 
     'amount' => [
@@ -41,7 +45,7 @@ return [
      *   LTV > review_max          -> reject
      */
     'ltv' => [
-        'approve_max' => 60.0,
+        'approve_max' => 62.0,
         'review_max' => 85.0,
     ],
 

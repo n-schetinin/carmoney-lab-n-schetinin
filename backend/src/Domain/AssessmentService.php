@@ -18,6 +18,7 @@ final class AssessmentService
         private readonly LtvCalculator $ltvCalculator,
         private readonly DecisionEngine $decisionEngine,
         private readonly VehicleAge $vehicleAge,
+        private readonly int $reviewMileageKm,
     ) {
     }
 
@@ -31,6 +32,10 @@ final class AssessmentService
 
         $ltv = $this->ltvCalculator->calculate($input['requested_amount'], $input['market_value']);
         $decision = $this->decisionEngine->decide($ltv);
+
+        if ($input['mileage'] > $this->reviewMileageKm) {
+            $decision = DecisionEngine::REVIEW;
+        }
 
         return [
             'vehicle_age' => $this->vehicleAge->inYears($input['year']),
