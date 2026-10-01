@@ -36,6 +36,7 @@ final class AppFactory
             new LtvCalculator(),
             new DecisionEngine($rules['ltv']),
             new VehicleAge((int) date('Y')),
+            (int) $rules['vehicle']['review_mileage_km'],
         );
 
         $controller = new ApplicationController($assessment, new ApplicationRepository($pdo));
